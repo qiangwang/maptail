@@ -2,6 +2,8 @@
 
 <img src="http://dl.dropbox.com/u/396087/maptail.png" border="0" />
 
+<img src="http://qiangwang.github.io/img/maptail-china-map.png" border="0" />
+
 maptail is a realtime map view of GeoIP data. Attach it to your server to track visitors, tail a log, pipe to its stdin or use it as a library to build your own implementation. Just emit IP addresses to it from any source and you'll automagically get a cool map with yellow dots and stuff like that streamed in with websockets or whatever transport you'd like to use.
 
 ## Installing

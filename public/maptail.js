@@ -258,13 +258,16 @@ window.onload = function () {
   }
 
   messages.object.onmouseover = function (e) {
+    /* no freeze or bug
     clearTimeout(messages.mouseoutTimeout)
     if (!messages.freeze) {
       messages.freeze = messages.lines.length - 1
       messages.lastLine = messages.lines[messages.freeze]
     }
+    */
   }
   messages.object.onmouseout = function (e) {
+    /* no freeze or bug
     if (messages.freeze) {
       messages.mouseoutTimeout = setTimeout(function () {
         messages.lines
@@ -273,6 +276,7 @@ window.onload = function () {
         messages.freeze = 0
       }, 1000)
     }
+    */
   }
 
   function createMap () {
@@ -313,19 +317,23 @@ window.onload = function () {
           marker.ipList.object, this.ipList.firstChild
         )
         marker.ipList.object.onmouseover = marker.object.onmouseover = function () {
+          /* no freeze or bug
           clearTimeout(self.freezeTimeout)
           self.freeze = self.freeze || []
           self.freezeRemove = self.freezeRemove || []
+          */
           marker.object.classList.add('hovered')
           messages.object.onmouseover()
         }
         marker.ipList.object.onmouseout = marker.object.onmouseout = function () {
+          /* no freeze or bug
           self.freezeTimeout = setTimeout(function () {
             self.freeze.forEach(self.append.bind(self))
             self.freezeRemove.forEach(self.destroy.bind(self))
             self.freeze = false
             self.freezeRemove = false
           }, 170)
+          */
           marker.object.classList.remove('hovered')
           messages.object.onmouseout()
         }
@@ -391,7 +399,7 @@ window.onload = function () {
     map.paper
       .path(mapVector)
       .attr({
-        stroke: "#333"
+        stroke: "#fff"
       , 'stroke-width': 1.05
       })
 
@@ -443,24 +451,11 @@ window.onload = function () {
     }
 
     map.latLongToPx = function (latlon) {
-      var lat = latlon[0]
-      var lon = latlon[1]
-      var x, y
-      var w = map.size.width
-      var h = map.size.height
-      var ox = -(w * 0.0245)
-      var oy = (h * 0.218)
-
-      x = (w * (180 + lon) / 360) % w
-
-      lat = lat * Math.PI / 180
-      y = Math.log(Math.tan((lat / 2) + (Math.PI / 4)))
-      y = (h / 2) - (w * y / (2 * Math.PI))
-
-      return {
-        x: x - map.margin + ox
-      , y: y - map.margin + oy
-      }
+        var px = latLongToPx(latlon[0], latlon[1], map.size.width, map.size.height)
+        return {
+          x: px.x - map.margin,
+          y: px.y - map.margin 
+        }
     }
 
     function onresize () {

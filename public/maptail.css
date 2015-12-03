@@ -1,7 +1,9 @@
 * {
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
 }
 
 html, body {
@@ -9,8 +11,6 @@ html, body {
   height:100%;
   max-width:100%;
   max-height:100%;
-  margin:0;
-  padding:0;
   background:#000;
   overflow:hidden;
 }
@@ -25,11 +25,18 @@ html, body {
   z-index:10;
 }
 
+#title {
+  position:fixed;
+  left:10px;
+  top:10px;
+  color: #fff;
+}
+
 #active {
   position:fixed;
   left:10px;
-  top:0;
-  color:#666;
+  top:50px;
+  color:#fff;
   font-family:Verdana, Arial, Helvetica, sans-serif;
   font-weight:normal;
   font-size:16px;
@@ -128,8 +135,8 @@ html, body {
 
 #regexp {
   position:fixed;
-  top:11px;
-  left:200px;
+  top:10px;
+  left:400px;
   z-index:100;
   background:rgba(0,0,0,0.3);
   border:1px solid #222;

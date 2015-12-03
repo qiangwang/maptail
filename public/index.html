@@ -5,17 +5,15 @@
   <script src="https://raw.github.com/kriskowal/es5-shim/master/es5-shim.min.js"></script>
   <script src="raphael-min.js"></script>
   <script src="/simpl.js"></script>
-  <script src="map.js"></script>
+  <script src="china-map.js"></script>
   <script src="maptail.js"></script>
   <title>maptail</title>
 </head>
 <body>
-  <div class="ribbon">
-    <a href="http://github.com/stagas/maptail">Fork me on GitHub</a>
-  </div>
   <div id="map">
+    <h1 id="title">用户实时访问分布</h1>
     <input id="regexp" name="regexp" placeholder="filter with regexp" value="">
-    <div id="active"><span id="active-number"></span> visitors</div>
+    <div id="active"><span id="active-number"></span> 访问/分钟</div>
     <div id="matches"></div>
     <div id="iplist"></div>
     <div id="sources"></div>
